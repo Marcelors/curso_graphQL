@@ -2,7 +2,14 @@ type Usuario {
     id: Int
     nome: String!
     email: String!
+    token: String
     perfis: [Perfil]
+}
+
+input UsuarioRegistrarInput {
+    nome: String!
+    email: String!
+    senha: String!
 }
 
 input UsuarioInput {
@@ -10,6 +17,11 @@ input UsuarioInput {
     email: String
     senha: String
     perfis: [PerfilFiltro]
+}
+
+input UsuarioLoginInput {
+    email: String!
+    senha: String!
 }
 
 input UsuarioFiltro {
