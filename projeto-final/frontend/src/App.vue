@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import Conteudo from './componentes/Conteudo'
+import { mapActions } from "vuex";
+import Conteudo from "./componentes/Conteudo";
 
 export default {
-	name: 'App',
-	components: { Conteudo },
-	methods: mapActions(['setUsuario']),
-	created() {
-		this.setUsuario(null)
-	}
-}
+  name: "App",
+  components: { Conteudo },
+  methods: mapActions(["setUsuario"]),
+  created() {
+    this.setUsuario(null);
+  },
+};
 </script>
