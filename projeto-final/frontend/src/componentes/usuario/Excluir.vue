@@ -33,6 +33,7 @@
 
 <script>
 import Erros from "../comum/Erros";
+import gql from "graphql-tag";
 
 export default {
   components: { Erros },
@@ -45,7 +46,30 @@ export default {
   },
   methods: {
     excluirUsuario() {
-      // implementar
+      this.$api
+        .mutate({
+          mutation: gql`
+            mutation($id: Int, $email: String) {
+              excluirUsuario(filtro: { id: $id, email: $email }) {
+                id
+                nome
+                email
+              }
+            }
+          `,
+          variables: {
+            id: this.filtro.id,
+            email: this.filtro.email,
+          },
+        })
+        .then((result) => {
+          this.dados = result.data.excluirUsuario;
+          this.erros = null;
+          this.filtro = {};
+        })
+        .catch((e) => {
+          this.erros = e;
+        });
     },
   },
 };

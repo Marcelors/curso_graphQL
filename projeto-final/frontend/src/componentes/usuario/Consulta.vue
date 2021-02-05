@@ -66,25 +66,23 @@ export default {
                 email
                 perfis {
                   rotulo
-                  nome
                 }
               }
             }
           `,
           variables: {
-            id: this.filtro.email,
-            email: this.filtro.senha,
+            id: this.filtro.id,
+            email: this.filtro.email,
           },
           fetchPolicy: "network-only",
         })
-        .then((result) => {
-          this.dados = result.data.usuario;
+        .then((resultado) => {
+          this.dados = resultado.data.usuario;
           this.filtro = {};
           this.erros = null;
         })
-        .catch((err) => {
-          this.dados = {};
-          this.erros = err;
+        .catch((e) => {
+          this.erros = e;
         });
     },
   },
